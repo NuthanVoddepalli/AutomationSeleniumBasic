@@ -1,0 +1,26 @@
+package BasicWebSiteAutomation.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Exercises01Elements {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/");
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
+		driver.findElement(By.id("item-0")).click();
+		driver.findElement(By.id("userName")).sendKeys("Automation");
+		driver.findElement(By.xpath("//*[@type='email']")).sendKeys("Automation@selenium.com");
+		driver.findElement(By.id("currentAddress")).sendKeys("Hyderabad Telangana");
+		driver.findElement(By.id("permanentAddress")).sendKeys("Hyderabad Telangana India");
+		driver.findElement(By.id("submit")).click();
+		Thread.sleep(2000);
+		driver.close();
+		
+	}
+
+}
