@@ -1,0 +1,66 @@
+package BasicWebSiteAutomation.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class Demo01WebSite {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		// TODO Auto-generated method stub
+		ChromeDriver driver = new ChromeDriver();
+		// Window maximize
+		driver.manage().window().maximize();
+		driver.get("https://testautomationpractice.blogspot.com/");
+		Thread.sleep(1000);
+		
+		// Text Filed 
+		driver.findElement(By.id("name")).sendKeys("Nuthan");
+		driver.findElement(By.id("email")).sendKeys("nuthan@gmail.com");
+		driver.findElement(By.id("phone")).sendKeys("1234321");
+		driver.findElement(By.xpath("//*[@id='textarea']")).sendKeys("abcdxyz");
+		
+		//Ratio Button
+		
+		driver.findElement(By.xpath("//*[@id='male']")).click();//Ratio Button
+		
+		//Page Scroll Down
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//js.executeScript("window.scroolBy(0,200)");
+		js.executeScript("window.scrollBy(0,600)");// Page scroll down
+		
+		//Click box
+		
+		driver.findElement(By.xpath("//*[@value='sunday']")).click();
+		
+		//drop down method using Select Class
+		
+		WebElement ddown= driver.findElement(By.id("country"));
+		Select select = new Select(ddown);
+		select.selectByValue("india");
+		Thread.sleep(3000);
+		
+		// Drag & Drop method by using Actions Class
+		
+		WebElement DragBox = driver.findElement(By.xpath("//*[@id='draggable']"));
+		WebElement DropBox = driver.findElement(By.xpath("//*[@id='droppable']"));
+		Actions Action = new Actions(driver);
+		Action.dragAndDrop(DragBox, DropBox).perform();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@value='blue']")).click();
+		Thread.sleep(2000);
+		js.executeScript("window.scrollBy(0,-600)");
+		
+		Thread.sleep(3000);
+	
+		driver.quit();
+
+	}
+
+}
