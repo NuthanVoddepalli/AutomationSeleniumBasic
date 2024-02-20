@@ -1,0 +1,29 @@
+package Selenium.com;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ImplicitWait {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.hyrtutorials.com/p/waits-demo.html");
+		driver.manage().window().maximize();
+		
+		// implicit wait
+		driver.manage().timeouts().implicitlyWait(11, TimeUnit.SECONDS);
+		
+		driver.findElement(By.id("btn1")).click();
+		driver.findElement(By.id("txt1")).sendKeys("Hello Nuthan");
+		driver.findElement(By.id("btn2")).click();
+		driver.findElement(By.id("txt2")).sendKeys("selenium wait");
+		Thread.sleep(2000);
+		driver.close();
+		}
+
+}
