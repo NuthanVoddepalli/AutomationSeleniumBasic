@@ -1,0 +1,28 @@
+package BasicWebSiteAutomation.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Exercises02CheckBox {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/");
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
+		driver.findElement(By.id("item-1")).click();
+		driver.findElement(By.xpath("//*[@class=\"rct-collapse rct-collapse-btn\"]")).click();
+		// Select Check Box
+		driver.findElement(By.xpath("//*[@id=\"tree-node\"]/ol/li/ol/li[1]/span/label/span[3]")).click();
+		driver.findElement(By.xpath("//*[@id=\"tree-node\"]/ol/li/ol/li[2]/span/label/span[3]")).click();
+		driver.findElement(By.xpath("//*[@id=\"tree-node\"]/ol/li/ol/li[3]/span/label/span[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@class=\"rct-collapse rct-collapse-btn\"]")).click();
+		driver.close();
+		
+
+	}
+
+}
