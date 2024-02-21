@@ -1,0 +1,37 @@
+package BasicWebSiteAutomation.com;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.idealized.Javascript;
+
+public class Exercises04WebTable {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/");
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
+		driver.findElement(By.id("item-3")).click();
+		driver.findElement(By.id("addNewRecordButton")).click();
+		driver.findElement(By.id("firstName")).sendKeys("Selenium");
+		driver.findElement(By.id("lastName")).sendKeys("Automation");
+		driver.findElement(By.id("userEmail")).sendKeys("Selenium@Automation.com");
+		driver.findElement(By.id("age")).sendKeys("25");
+		driver.findElement(By.id("salary")).sendKeys("1000");
+		driver.findElement(By.id("department")).sendKeys("Tester");
+		Thread.sleep(2000);
+		driver.findElement(By.id("submit")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.close();
+	}
+
+}
