@@ -1,0 +1,37 @@
+package BasicWebSiteAutomation.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Exercises05Buttons {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "./DriverFile/chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/");
+		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
+		driver.findElement(By.id("item-4")).click();
+		
+		WebElement Double =driver.findElement(By.id("doubleClickBtn"));
+		WebElement Right = driver.findElement(By.id("rightClickBtn"));
+		WebElement Single =driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div[2]/div[2]/div[3]/button"));
+		Actions action = new Actions(driver);
+		// Double Click
+		action.doubleClick(Double).build().perform();
+		// Right click
+		action.contextClick(Right).build().perform();
+		// Single click
+		action.click(Single).build().perform();
+		Thread.sleep(3000);
+		driver.close();
+		
+		
+
+	}
+
+}
