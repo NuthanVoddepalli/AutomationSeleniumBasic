@@ -1,0 +1,61 @@
+package com.Waits;
+
+import java.time.Clock;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Sleeper;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class WaitsPage {
+	
+	private static final Sleeper Secounds = null;
+	private static final Clock TimeUnit = null;
+	WebDriver driver;
+	WebDriverWait wait;
+	FluentWait<WebDriver> Fwait;
+	
+	public WaitsPage() {
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+	}
+	public void LoadURL() {
+		driver.get("https://www.timeanddate.com/stopwatch/");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0, 350)");
+	}
+	public void ClickOnStateButton() {
+		driver.findElement(By.xpath("/html/body/div[5]/main/article/section[1]/form/div/div/div[3]/button[1]/span[2]")).click();
+		
+	}
+	public void ClickOnSplitButton() {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/main/article/section[1]/form/div/div/div[3]/button[2]/span")));
+		
+		
+	}
+	public void ClickOnResetButton() {
+		driver.findElement(By.xpath("/html/body/div[5]/main/article/section[1]/form/div/div/div[3]/button[3]/span")).click();
+		Fwait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5));
+		 Fwait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/main/article/section[1]/form/div/div/div[6]/div/form/footer/button[2]")));
+		driver.findElement(By.xpath("/html/body/div[5]/main/article/section[1]/form/div/div/div[6]/div/form/footer/button[2]")).click();
+	}
+	
+	public void Close() {
+		driver.close();
+	}
+
+}
