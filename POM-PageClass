@@ -1,0 +1,51 @@
+package com.Automation;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PageAutomation<WebElements> {
+	static WebDriver driver;
+	static WebElement SearchBar;
+	
+	public  PageAutomation() {
+		
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		
+	}
+	
+	public void loadUrl() {
+		driver.get("https://www.google.co.in/");
+		driver.manage().window().maximize();
+	}
+	public String GetThePageName() {
+		return driver.getTitle();
+	}
+	public void EnterText() {
+		SearchBar =driver.findElement(By.name("q"));
+		SearchBar.sendKeys("Capgemini");
+		SearchBar.submit();
+		
+	}
+	public String GetURL() {
+		return driver.getCurrentUrl();
+	}
+	public void CloseWeb() {
+		driver.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void FindAnchors() {
+		List<WebElement>list= driver.findElements(By.tagName("a"));
+		Iterator<WebElement>it= (Iterator<WebElement>) list.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next().getText());
+		}
+	}
+
+}
