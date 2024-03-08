@@ -32,7 +32,7 @@ public class Demo01WebSite {
 		//Page Scroll Down
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		//js.executeScript("window.scroolBy(0,200)");
+		
 		js.executeScript("window.scrollBy(0,600)");// Page scroll down
 		
 		//Click box
