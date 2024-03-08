@@ -1,0 +1,20 @@
+package com.Waits;
+
+public class WaitsTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WaitsPage waits = new WaitsPage();
+		waits.LoadURL();
+		
+		waits.ClickOnStateButton();
+		waits.ClickOnSplitButton();
+		waits.ClickOnStateButton();
+		Thread.sleep(2000);
+		waits.ClickOnResetButton();
+		Thread.sleep(2000);
+	//	waits.Close();
+
+	}
+
+}
