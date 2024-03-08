@@ -1,0 +1,47 @@
+package com.Switch;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JSAlertsPage {
+	
+	WebDriver driver;
+	
+	public JSAlertsPage() {
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+
+	public void LoadURL() {
+		driver.get("https://testautomationpractice.blogspot.com/");
+		
+	}
+	
+	public void ClickOnAlertButton() {
+		driver.findElement(By.xpath("//*[@id=\"HTML9\"]/div[1]/button[1]")).click();
+		driver.switchTo().alert().getText();
+		driver.switchTo().alert().accept();
+	
+	}
+	
+	public void ClickOnConfirmBoxForOK() throws InterruptedException {
+		driver.findElement(By.xpath("//*[@id=\"HTML9\"]/div[1]/button[2]")).click();
+		Thread.sleep(3000);
+		driver.switchTo().alert().getText();
+		driver.switchTo().alert().accept();
+		
+	}
+	
+
+	public void ClickOnConfirmBoxForCancle() throws InterruptedException {
+		driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[4]/div[3]/div/aside/div/div[3]/div[1]/button[2]")).click();
+		Thread.sleep(3000);
+		driver.switchTo().alert().dismiss();
+	}
+	
+	public void CloseTab() {
+		driver.close();
+	}
+}
