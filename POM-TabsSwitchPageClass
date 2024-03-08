@@ -1,0 +1,34 @@
+package com.Switch;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PageSwitch {
+	WebDriver driver;
+	
+	public PageSwitch() {
+		System.setProperty("webdriver.chrome.driver", ".//driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		
+	}
+	
+	public void LoadURL() {
+		driver.get("https://testautomationpractice.blogspot.com/");
+		driver.manage().window().maximize();
+	}
+	public void NewTab() {
+		driver.findElement(By.xpath("//*[@id=\"HTML4\"]/div[1]/button")).click();
+	}
+
+	public void Close() {
+		driver.quit();
+	}
+	public void Tabs() {
+		ArrayList<String>array = new ArrayList<>(driver.getWindowHandles());
+		driver.switchTo().window(array.get(0));
+	}
+}
