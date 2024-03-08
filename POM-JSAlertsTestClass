@@ -1,0 +1,21 @@
+package com.Switch;
+
+public class JSAlertsTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		JSAlertsPage Alert = new JSAlertsPage();
+		Alert.LoadURL();
+		Alert.ClickOnAlertButton();
+		Thread.sleep(3000);
+		
+		Alert.ClickOnConfirmBoxForOK();
+		Thread.sleep(1000);
+		Alert.ClickOnConfirmBoxForCancle();
+		Thread.sleep(3000);
+		Alert.CloseTab();
+
+	}
+
+}
