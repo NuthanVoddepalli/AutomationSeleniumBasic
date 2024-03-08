@@ -1,0 +1,19 @@
+package com.registration;
+
+public class TestRegistration {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		PageRegistration Test = new PageRegistration();
+		Test.LoadURL();
+		Test.EnterData();
+		Test.GenderHobbies();
+		Test.Skills();
+		Test.Country();
+		Test.Password();
+		Test.Close();
+			
+	}
+
+}
