@@ -1,0 +1,57 @@
+package com.registration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class PageRegistration {
+
+	static WebDriver driver;
+	public PageRegistration() {
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		
+	}
+	public void LoadURL() {
+		driver.get("https://demo.automationtesting.in/Register.html");
+		driver.manage().window().maximize();
+	}
+	public void EnterData() {
+		driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[1]/input")).sendKeys("FirstName");
+		driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")).sendKeys("LastName");
+		driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[2]/div/textarea")).sendKeys("Selenium-Automation-Java");
+		driver.findElement(By.xpath("//*[@type='email']")).sendKeys("Selenium@java.com");
+		driver.findElement(By.xpath("//*[@type='tel']")).sendKeys("Selenium@java.com");
+		
+		
+	}
+	public void GenderHobbies() {
+		driver.findElement(By.xpath("//*[@id=\"basicBootstrapForm\"]/div[5]/div/label[1]/input")).click();
+		driver.findElement(By.id("checkbox2")).click();
+	}
+	public void Skills() {
+		WebElement Skill= driver.findElement(By.xpath("//*[@id=\"-\"]"));
+		Select select = new Select(Skill);
+		select.selectByValue("Java");
+		
+
+	}
+	public void Country() {
+		WebElement Country = driver.findElement(By.xpath("//*[@id=\"select2-country-container\"]"));
+		Select select = new Select(Country);
+		select.selectByValue("India");
+	}
+	public void Password() {
+		driver.findElement(By.id("firstpassword")).sendKeys("firstpassword");
+		driver.findElement(By.id("secondpassword")).sendKeys("firstpassword");
+	}
+	public void Submit() {
+		driver.findElement(By.id("submitbtn")).click();
+	}
+
+	public void Close() {
+		driver.quit();
+	}
+}
