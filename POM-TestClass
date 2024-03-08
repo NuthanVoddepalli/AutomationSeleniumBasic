@@ -1,0 +1,19 @@
+package com.Automation;
+
+public class TestAutomation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PageAutomation Test = new PageAutomation();
+		Test.loadUrl();
+		Test.EnterText();
+		String PageName = Test.GetThePageName();
+		System.out.println("The Page Name = "+PageName);
+		String url = Test.GetURL();
+		System.out.println("The URL is =  "+ url);
+		Test.FindAnchors();
+		Test.CloseWeb();
+
+	}
+
+}
