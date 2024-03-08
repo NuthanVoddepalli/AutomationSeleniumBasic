@@ -1,0 +1,17 @@
+package com.Switch;
+
+public class TabSwitch {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		PageSwitch Switch = new PageSwitch();
+		Switch.LoadURL();
+		Switch.NewTab();
+		Thread.sleep(2000);
+		Switch.Tabs();
+	    Switch.Close();
+
+	}
+
+}
