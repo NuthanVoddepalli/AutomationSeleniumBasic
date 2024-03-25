@@ -1,0 +1,51 @@
+package Selenium.com;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DemoForm {
+	static Select select;
+	static WebDriver driver;
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "DriverFile/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(11, TimeUnit.SECONDS);
+
+        // Navigate to the URL
+        driver.get("https://demoqa.com/");
+        driver.manage().window().maximize();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[1]")).click();
+        driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div[1]/div/div/div[2]/div/ul/li/span")).click();
+        driver.findElement(By.xpath("//*[@id='dateOfBirthInput']")).click();
+        
+        WebElement Month = driver.findElement(By.xpath("//*[@class='react-datepicker__month-select']"));
+         select = new Select(Month);
+        select.selectByVisibleText("June");
+        
+        WebElement Year = driver.findElement(By.xpath("//*[@class='react-datepicker__year-select']"));
+        select = new Select(Year);
+        select.selectByValue("1997");
+        Thread.sleep(3000);
+    //   WebElement Date=
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		js.executeScript("window.scrollBy(0,300)");
+    		   driver.findElement(By.xpath("//*[@class='react-datepicker__day react-datepicker__day--019']")).click();
+    //  Actions action = new Actions(driver);
+   //   action.click(Date).build().perform();
+        
+
+	}
+
+}
